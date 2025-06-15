@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>CryptIQ - Predict before Invest</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <style>
+      /* Existing CSS remains unchanged */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        display: flex;
+        background-color: #f5f7fb;
+      }
+
+      .sidebar {
+        width: 260px;
+        height: 100vh;
+        background-color: #ffffff;
+        border-right: 1px solid #e0e0e0;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 20px 0;
+      }
+
+      .logo {
+        text-align: center;
+        font-size: 24px;
+        font-weight: bold;
+        color: #1565c0;
+        margin-bottom: 40px;
+      }
+
+      .logo span {
+        color: #00bcd4;
+      }
+
+      .nav {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 0 30px;
+      }
+
+      .nav a {
+        text-decoration: none;
+        color: #333;
+        font-size: 16px;
+        padding: 10px;
+        border-radius: 6px;
+        transition: background 0.3s ease;
+      }
+
+      .nav a:hover,
+      .nav a.active {
+        background-color: #e0f2ff;
+        color: #1565c0;
+      }
+
+      .user-info {
+        padding: 20px 30px;
+        border-top: 1px solid #ddd;
+        font-size: 14px;
+      }
+
+      .user-info span {
+        font-weight: bold;
+      }
+
+      .main {
+        flex: 1;
+        padding: 30px;
+      }
+
+      .main h2 {
+        font-size: 24px;
+        margin-bottom: 20px;
+      }
+
+      .summary-box {
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 20px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+        margin-bottom: 30px;
+      }
+
+      .summary-box h3 {
+        margin-bottom: 10px;
+        color: #1565c0;
+      }
+
+      .crypto-select {
+        width: 100%;
+        max-width: 300px;
+        padding: 10px;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+        margin-bottom: 20px;
+      }
+
+      .btn-group {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      button {
+        background-color: #1565c0;
+        color: #fff;
+        border: none;
+        padding: 10px 16px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      button:hover {
+        background-color: #0d47a1;
+      }
+
+      .right-panel {
+        width: 280px;
+        background-color: #fff;
+        border-left: 1px solid #e0e0e0;
+        padding: 30px 20px;
+      }
+
+      .profile-img {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .user-card {
+        background: linear-gradient(135deg, #2196f3, #00bcd4);
+        padding: 20px;
+        border-radius: 12px;
+        color: white;
+        margin-bottom: 30px;
+      }
+
+      .user-card h4,
+      .user-card h3 {
+        margin: 0 0 5px;
+      }
+
+      .user-card p {
+        font-size: 14px;
+      }
+
+      .logout {
+        text-align: center;
+        margin-top: 40px;
+      }
+
+      .logout a {
+        color: #1565c0;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      .stats {
+        margin-top: 20px;
+      }
+
+      .stats p {
+        margin-bottom: 6px;
+        font-size: 14px;
+      }
+
+      .stats .badge {
+        background-color: #fff;
+        color: #1565c0;
+        padding: 4px 10px;
+        border-radius: 10px;
+        font-size: 12px;
+        display: inline-block;
+        margin-top: 6px;
+      }
+
+      footer {
+        text-align: center;
+        padding: 20px;
+        background-color: #ffffff;
+        border-top: 1px solid #ddd;
+        font-size: 14px;
+        color: #777;
+      }
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 9999;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+
+      .modal-content {
+        background-color: #ffffff;
+        margin: 10% auto;
+        padding: 30px;
+        border: 1px solid #888;
+        border-radius: 15px;
+        width: 50%;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        animation: fadeIn 0.3s ease-in-out;
+      }
+
+      .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      .close:hover {
+        color: red;
+      }
+
+      .result-text {
+        font-size: 24px;
+        color: #1565c0;
+        font-weight: bold;
+        margin-top: 20px;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: scale(0.95);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="sidebar">
+      <div>
+        <div class="logo">Crypt<span>IQ</span></div>
+        <div class="nav">
+          <a href="{{ url_for('home') }}" class="active">Home</a>
+          <a href="{{ url_for('account') }}">My Account</a>
+          <a href="{{ url_for('graph_page') }}">Currency Graph</a>
+          <a href="{{ url_for('about') }}">About Us</a>
+        </div>
+      </div>
+      <div class="user-info">
+        <p><span>{{ userid }}</span><br />{{ username }}</p>
+        <!-- Logged in as: <strong>{{ userid }}</strong> -->
+        <div class="logout">
+          <a href="{{ url_for('logout') }}">Logout</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="main">
+      <h2>Welcome to CryptIQ</h2>
+      <div class="summary-box">
+        <h3>Select a Cryptocurrency</h3>
+        <select class="crypto-select" name="crypto" id="cryptoSelect">
+          <option value="" disabled selected>-- Choose One --</option>
+          <option value="Bitcoin">Bitcoin</option>
+          <option value="Ethereum">Ethereum</option>
+          <option value="Cardano">Cardano</option>
+          <option value="ChainLink">ChainLink</option>
+          <option value="Litecoin">Litecoin</option>
+          <option value="Monero">Monero</option>
+          <option value="Stellar">Stellar</option>
+          <option value="Tether">Tether</option>
+          <option value="USDCoin">USDCoin</option>
+          <option value="XRP">XRP</option>
+        </select>
+
+        <div class="btn-group">
+          <button onclick="predictPrice(1)">1 Day Forecast</button>
+          <button onclick="predictPrice(7)">1 Week Forecast</button>
+          <button onclick="predictPrice(30)">1 Month Forecast</button>
+          <button onclick="predictPrice(365)">1 Year Forecast</button>
+          <button onclick="showGraph()">Show Current Graph</button>
+        </div>
+        <!-- <p id="predictionResult"></p> -->
+      </div>
+      <div id="output" style="margin-top: 20px"></div>
+    </div>
+
+    <div class="right-panel">
+      <div class="profile-img">
+        <!-- SVG Avatar -->
+        <svg
+          width="80"
+          height="80"
+          viewBox="0 0 100 100"
+          fill="#1565c0"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <circle cx="50" cy="30" r="20" />
+          <path
+            d="M50 55c-15 0-30 8-30 20v5h60v-5c0-12-15-20-30-20z"
+            fill="#1565c0"
+          />
+        </svg>
+      </div>
+      <div class="user-card">
+        <h3>{{ userid }}</h3>
+        <p>{{ username }}</p>
+        <p>Premium User</p>
+        <div class="stats">
+          <p>Predictions Made: <span class="badge">34</span></p>
+          <p>Accuracy Rate: <span class="badge">92%</span></p>
+          <p>Member Since: <span class="badge">April 2025</span></p>
+        </div>
+      </div>
+      <div>
+        <h4 style="margin-bottom: 10px">Top Categories</h4>
+        <p>Prediction</p>
+        <div
+          style="
+            height: 8px;
+            background: #1565c0;
+            width: 80%;
+            border-radius: 4px;
+          "
+        ></div>
+        <p style="margin-top: 10px">Live Graph</p>
+        <div
+          style="
+            height: 8px;
+            background: #00bcd4;
+            width: 60%;
+            border-radius: 4px;
+          "
+        ></div>
+      </div>
+    </div>
+    <div id="predictionModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>📈 Prediction Result</h2>
+        <p id="predictionResult" class="result-text"></p>
+      </div>
+    </div>
+    <script>
+      async function showGraph() {
+        const crypto = document.getElementById("cryptoSelect").value;
+        if (!crypto) {
+          alert("Please select a cryptocurrency!");
+          return;
+        }
+        try {
+          const response = await fetch("/graph", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ crypto }),
+          });
+          const data = await response.json();
+          if (data.error) {
+            throw new Error(data.error);
+          }
+          document.getElementById(
+            "output"
+          ).innerHTML = `<img src="${data.graph}" alt="Graph" style="max-width:100%;">`;
+        } catch (error) {
+          alert("Failed to load the graph.");
+        }
+      }
+
+      async function showForecast(days) {
+        const crypto = document.getElementById("cryptoSelect").value;
+
+        if (!crypto) {
+          alert("Please select a cryptocurrency!");
+          return;
+        }
+
+        try {
+          const response = await fetch("/forecast", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ crypto, days: parseInt(days) }), // Explicitly parse days to number
+          });
+
+          const data = await response.json();
+          if (data.error) throw new Error(data.error);
+
+          alert(
+            `Prediction for ${days} day(s):\nDate: ${
+              data.date
+            }\nPrice: $${data.price.toFixed(2)}`
+          );
+        } catch (error) {
+          console.error("Error details:", error);
+          alert("Forecast failed: " + error.message);
+        }
+      }
+      // async function predictPrice(days) {
+      //   const coin = document.getElementById("cryptoSelect").value;
+      //   const response = await fetch("/predict", {
+      //     method: "POST",
+      //     headers: { "Content-Type": "application/json" },
+      //     body: JSON.stringify({ crypto }),
+      //   });
+      //   const data = await response.json();
+      //   document.getElementById(
+      //     "result"
+      //   ).innerText = `Predicted Price: $${data.price}`;
+      // }
+      function predictPrice(days) {
+        const coin = document.getElementById("cryptoSelect").value;
+        if (!coin) {
+          alert("Please select a cryptocurrency!");
+          return;
+        }
+
+        fetch("http://127.0.0.1:5000/predict", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            coin: coin,
+            days: parseInt(days),
+          }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            showPredictionPopup(
+              `Predicted price for ${coin} after ${days} day(s): $${data.price}`
+            );
+            // console.log("Predicted Price:", data.price);
+            // document.getElementById(
+            //   "predictionResult"
+            // ).innerText = `Predicted price for ${coin} after ${days} day(s): $${data.price}`;
+          })
+          .catch((err) => {
+            console.error("Error:", err);
+          });
+      }
+      function showPredictionPopup(message) {
+        const modal = document.getElementById("predictionModal");
+        const span = document.getElementsByClassName("close")[0];
+        const resultText = document.getElementById("predictionResult");
+
+        resultText.innerText = message;
+        modal.style.display = "block";
+
+        span.onclick = () => (modal.style.display = "none");
+        window.onclick = (e) => {
+          if (e.target === modal) modal.style.display = "none";
+        };
+      }
+    </script>
+  </body>
+</html>

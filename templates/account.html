@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Account - CryptIQ</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        display: flex;
+        background-color: #f5f7fb;
+      }
+
+      .sidebar {
+        width: 260px;
+        height: 100vh;
+        background-color: #ffffff;
+        border-right: 1px solid #e0e0e0;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 20px 0;
+      }
+
+      .logo {
+        text-align: center;
+        font-size: 24px;
+        font-weight: bold;
+        color: #1565c0;
+        margin-bottom: 40px;
+      }
+
+      .logo span {
+        color: #00bcd4;
+      }
+
+      .nav {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 0 30px;
+      }
+
+      .nav a {
+        text-decoration: none;
+        color: #333;
+        font-size: 16px;
+        padding: 10px;
+        border-radius: 6px;
+        transition: background 0.3s ease;
+      }
+
+      .nav a:hover,
+      .nav a.active {
+        background-color: #e0f2ff;
+        color: #1565c0;
+      }
+
+      .user-info {
+        padding: 20px 30px;
+        border-top: 1px solid #ddd;
+        font-size: 14px;
+      }
+
+      .user-info span {
+        font-weight: bold;
+      }
+
+      .logout {
+        text-align: center;
+        margin-top: 20px;
+      }
+
+      .logout a {
+        color: #1565c0;
+        text-decoration: none;
+        font-weight: bold;
+        display: inline-block;
+        margin-top: 10px;
+      }
+
+      .main {
+        flex: 1;
+        padding: 40px;
+      }
+
+      .main h2 {
+        color: #1565c0;
+        font-size: 28px;
+        margin-bottom: 30px;
+      }
+
+      .profile-header {
+        display: flex;
+        align-items: center;
+        gap: 25px;
+        margin-bottom: 30px;
+      }
+
+      .profile-img i {
+        font-size: 90px;
+        color: #1565c0;
+      }
+
+      .profile-header h3 {
+        font-size: 24px;
+        color: #333;
+      }
+
+      .account-details {
+        background-color: #ffffff;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+        margin-bottom: 40px;
+      }
+
+      .account-details h3 {
+        margin-bottom: 15px;
+        color: #1565c0;
+      }
+
+      .account-details p {
+        margin: 8px 0;
+        font-size: 16px;
+        color: #444;
+      }
+
+      .right-panel {
+        width: 320px;
+        background-color: #fff;
+        border-left: 1px solid #e0e0e0;
+        padding: 30px 20px;
+      }
+
+      .user-card {
+        background: linear-gradient(135deg, #2196f3, #00bcd4);
+        padding: 20px;
+        border-radius: 12px;
+        color: white;
+        margin-bottom: 30px;
+        text-align: center;
+      }
+
+      .user-card h3 {
+        margin: 10px 0 5px;
+      }
+
+      .user-card p {
+        font-size: 14px;
+      }
+
+      .badges {
+        margin: 20px 0;
+        text-align: center;
+      }
+
+      .badge {
+        display: inline-block;
+        background: #ffffff;
+        color: #1565c0;
+        padding: 6px 12px;
+        margin: 5px;
+        border-radius: 20px;
+        font-size: 13px;
+        font-weight: 500;
+      }
+
+      .stats h4 {
+        margin-bottom: 10px;
+        color: #1565c0;
+      }
+
+      .progress-bar {
+        background: #e0e0e0;
+        border-radius: 6px;
+        height: 8px;
+        width: 100%;
+        margin-bottom: 15px;
+      }
+
+      .progress-bar-fill {
+        height: 100%;
+        border-radius: 6px;
+        background: #1565c0;
+      }
+
+      .progress-alt {
+        background: #00bcd4;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div>
+        <div class="logo">Crypt<span>IQ</span></div>
+        <nav class="nav">
+          <a href="{{ url_for('home') }}">Home</a>
+          <!-- <a class="active" href="#">My Account</a> -->
+          <a class="active" href="{{ url_for('account') }}">My Account</a>
+          <a href="{{ url_for('graph_page') }}">Currency Graph</a>
+          <a href="{{ url_for('about') }}">About Us</a>
+        </nav>
+      </div>
+
+      <div class="user-info">
+        <p><span>{{ userid }}</span><br />{{ user }}</p>
+        <div class="logout">
+          <a href="{{ url_for('logout') }}">Logout</a>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main">
+      <h2>Account Overview</h2>
+
+      <div class="profile-header">
+        <div class="profile-img">
+          <i class="fas fa-user-circle"></i>
+        </div>
+        <div>
+          <h3>{{ userid|title }}</h3>
+          <p>Premium Member • Joined April 2025</p>
+        </div>
+      </div>
+
+      <section class="account-details">
+        <h3>Account Information</h3>
+        <p><strong>User ID:</strong> CRQ124566</p>
+        <p><strong>Email:</strong> {{ user }}</p>
+        <p><strong>Subscription:</strong> Premium (Monthly)</p>
+        <p><strong>Status:</strong> Active</p>
+      </section>
+    </main>
+
+    <!-- Right Side Panel -->
+    <aside class="right-panel">
+      <div class="profile-img">
+        <i class="fas fa-user-circle"></i>
+      </div>
+
+      <div class="user-card">
+        <h3>{{ userid|title }}</h3>
+        <p>Premium Member</p>
+        <p>{{ user }}</p>
+      </div>
+
+      <div class="badges">
+        <div class="badge">Top Predictor</div>
+        <div class="badge">Verified Email</div>
+        <div class="badge">Early Access</div>
+      </div>
+
+      <section class="stats">
+        <h4>Prediction Accuracy</h4>
+        <div class="progress-bar">
+          <div class="progress-bar-fill" style="width: 85%"></div>
+        </div>
+        <p style="font-size: 13px; color: #333">85% Accuracy</p>
+
+        <h4>Monthly Activity</h4>
+        <div class="progress-bar">
+          <div class="progress-bar-fill progress-alt" style="width: 65%"></div>
+        </div>
+        <p style="font-size: 13px; color: #333">13 of 20 Predictions Made</p>
+      </section>
+    </aside>
+  </body>
+</html>

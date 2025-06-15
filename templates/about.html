@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>About - CryptIQ</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Font Awesome for icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Roboto", sans-serif;
+        background-color: #f2f6fc;
+        color: #333;
+        line-height: 1.6;
+      }
+
+      header {
+        background-color: #1565c0;
+        color: white;
+        padding: 30px 20px;
+        text-align: center;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      header h1 {
+        font-size: 36px;
+        margin-bottom: 10px;
+      }
+
+      header p {
+        font-size: 18px;
+        font-weight: 300;
+      }
+
+      .banner-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 30px 0;
+      }
+
+      .banner-img {
+        width: 65%;
+        height: auto;
+        max-height: 500px;
+        object-fit: cover;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      @media (max-width: 768px) {
+        .banner-img {
+          width: 90%;
+        }
+      }
+
+      .container {
+        max-width: 1000px;
+        margin: 40px auto;
+        padding: 0 20px;
+      }
+
+      .section {
+        background-color: #fff;
+        border-radius: 12px;
+        padding: 30px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        margin-bottom: 30px;
+      }
+
+      .section h2 {
+        color: #1565c0;
+        margin-bottom: 20px;
+        font-size: 28px;
+      }
+
+      .section p {
+        font-size: 18px;
+        margin-bottom: 16px;
+      }
+
+      .highlight {
+        background: linear-gradient(90deg, #00bcd4, #2196f3);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-weight: bold;
+      }
+
+      footer {
+        text-align: center;
+        padding: 20px;
+        background-color: #ffffff;
+        border-top: 1px solid #ddd;
+        font-size: 14px;
+        color: #777;
+      }
+
+      .back-link {
+        display: inline-block;
+        margin-top: 20px;
+        text-decoration: none;
+        color: #1565c0;
+        font-weight: bold;
+        transition: color 0.3s;
+      }
+
+      .back-link:hover {
+        color: #0d47a1;
+      }
+
+      ul {
+        margin: 10px 0 0 20px;
+        font-size: 16px;
+      }
+
+      ul li {
+        margin-bottom: 13px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Header -->
+    <header>
+      <h1>About Crypt<span class="highlight">IQ</span></h1>
+      <!-- <p>Trade with insight, not instinct.</p> -->
+    </header>
+
+    <!-- Banner Image -->
+    <div class="banner-container">
+      <img src="\static\Banner.png" alt="Crypto Banner" class="banner-img" />
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+      <!-- Section: Our Mission -->
+      <div class="section">
+        <h2>Our Mission</h2>
+        <p>
+          At <span class="highlight">CryptIQ</span>, our mission is to transform
+          how people engage with the world of cryptocurrency through the power
+          of data science and artificial intelligence. In a market known for its
+          unpredictability, our goal is to introduce a layer of precision,
+          intelligence, and trust. We are not just building tools, we're
+          building a smarter way to invest.
+        </p>
+        <p>
+          We understand that navigating the crypto landscape can be
+          overwhelming. Prices fluctuate rapidly, trends shift in seconds, and
+          information overload is a constant challenge. That's why CryptIQ is
+          designed to simplify complexity. We use cutting-edge machine learning
+          models to filter through vast amounts of historical and real-time
+          data, delivering clear, actionable insights tailored to every kind of
+          investor.
+        </p>
+        <p>
+          Whether you're exploring your first Bitcoin investment or actively
+          managing a diversified crypto portfolio, CryptIQ offers a strategic
+          advantage. We empower you with forecasts that aren't just numbers,
+          they're intelligent predictions backed by advanced algorithms, built
+          to reflect real-world market behavior.
+        </p>
+        <p>
+          But our mission doesn't stop at prediction. We're committed to
+          education, transparency, and growth. As the crypto ecosystem evolves,
+          so do we, constantly refining our models, expanding our features, and
+          helping users gain a deeper understanding of digital assets.
+        </p>
+        <p>
+          With <span class="highlight">CryptIQ</span>, you're not just
+          investing. You're investing wisely, with confidence, and with a clear
+          vision of the road ahead.
+        </p>
+      </div>
+
+      <!-- Section: What We Do -->
+      <div class="section">
+        <h2>What We Do</h2>
+        <p>
+          <span class="highlight">CryptIQ</span> is an AI-powered cryptocurrency
+          forecasting tool that analyzes historical and real-time market data to
+          generate accurate price predictions for popular digital currencies
+          like <strong>Bitcoin, Ethereum, Litecoin, Cardano</strong>, and many
+          more.
+        </p>
+        <p>
+          We leverage cutting-edge machine learning algorithms, including
+          <strong>XGBoost</strong>,
+          <strong>LSTM-based time-series models</strong>, and ensemble
+          forecasting methods to predict both short-term fluctuations and
+          long-term trends with high reliability. Our models are continuously
+          retrained with fresh data feeds from global exchanges, ensuring
+          predictions remain relevant, adaptive, and data-driven.
+        </p>
+        <p>
+          Users can explore interactive, real-time currency graphs and generate
+          predictions for various timeframes —
+          <strong>1 day, 1 week, 1 month, or even up to 1 year</strong> — all
+          through an intuitive, user-friendly dashboard. The platform also
+          supports comparison of historical performance, trend analysis, and
+          volatility tracking, enabling deeper insights before making investment
+          decisions.
+        </p>
+        <p>
+          In addition to price forecasting,
+          <span class="highlight">CryptIQ</span> provides contextual insights
+          such as <strong>market sentiment analysis</strong>,
+          <strong>technical indicators</strong>, and
+          <strong>risk assessment scores</strong>, allowing users to make not
+          only informed but also strategically sound decisions in a volatile
+          financial ecosystem.
+        </p>
+        <p>
+          Whether you are a data-savvy investor or a crypto newcomer,
+          <span class="highlight">CryptIQ</span> is designed to be your
+          intelligent companion in navigating the digital finance revolution.
+        </p>
+      </div>
+
+      <!-- Section: Why Choose Us -->
+      <div class="section">
+        <h2>Why Choose Us?</h2>
+        <p>
+          At <span class="highlight">CryptIQ</span>, we don’t just offer a
+          platform — we offer a powerful, intuitive tool that puts the world of
+          cryptocurrency at your fingertips. We believe that simplicity,
+          transparency, and accuracy are the keys to smarter investing. That’s
+          why our platform is crafted with you, the investor, in mind.
+        </p>
+        <p>Our platform’s standout features include:</p>
+        <ul>
+          <li>
+            ✅ <strong>User-friendly interface with intuitive controls</strong>:
+            No complex jargon. Just simple, easy-to-understand tools that help
+            you make quick, confident decisions.
+          </li>
+          <li>
+            ✅
+            <strong
+              >Predictions powered by robust machine learning models</strong
+            >: Using advanced AI algorithms, we deliver highly accurate
+            predictions that adapt to the ever-changing crypto market.
+          </li>
+          <li>
+            ✅ <strong>Multiple forecasting timeframes</strong>: Whether you’re
+            interested in short-term gains or long-term strategies, we offer
+            predictions for a range of timeframes — from 1 day to 1 year.
+          </li>
+          <li>
+            ✅ <strong>Transparent insights with historical trends</strong>:
+            Gain a deeper understanding of past market movements, so you can
+            make predictions based on solid, data-driven insights.
+          </li>
+          <li>
+            ✅ <strong>Continuously improving model accuracy</strong>: Our
+            models evolve with the market, constantly updated with new data to
+            provide the most accurate predictions possible.
+          </li>
+        </ul>
+        <p>
+          At <span class="highlight">CryptIQ</span>, we don’t just provide
+          tools; we provide the knowledge you need to make smarter, more
+          informed decisions. We understand that in the world of crypto, timing
+          and accuracy are everything, and that’s why we’re dedicated to helping
+          you navigate this volatile market with confidence.
+        </p>
+        <p>
+          Join us as we redefine the way cryptocurrency investing is done — with
+          clarity, precision, and trust.
+        </p>
+      </div>
+
+      <!-- Section: Join Us -->
+      <div class="section">
+        <h2>Join Us on the Journey</h2>
+        <p>
+          As cryptocurrencies continue to revolutionize the financial landscape,
+          <span class="highlight">CryptIQ</span> invites you to embark on this
+          thrilling journey of innovation and opportunity. Dive deep into the
+          world of digital assets with confidence, armed with the smartest tools
+          and insights at your fingertips.
+        </p>
+        <p>
+          Stay informed with real-time data, stay updated with cutting-edge
+          forecasts, and most importantly — stay ahead of the curve in this
+          fast-evolving market.
+        </p>
+        <p>
+          Together, let’s harness the power of AI to predict smarter, invest
+          wiser, and unlock the future of finance.
+        </p>
+
+        <a href="{{ url_for('home') }}">Back to Home</a>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>&copy; 2025 CryptIQ. All rights reserved.</footer>
+  </body>
+</html>
+<!-- {% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <div id="flash-messages">
+      {% for category, message in messages %}
+        <div class="flash {{ category }}">{{ message }}</div>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endwith %} -->
