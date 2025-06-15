@@ -70,7 +70,7 @@ Ensemble methods like **XGBoost** have gained attention for their scalability, b
 
 ---
 
-## Algorithms Used
+## 🧠 Algorithms Used
 
 CryptIQ employs advanced machine learning algorithms to ensure robust and accurate cryptocurrency price prediction:
 
